@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS Feed</title>
+</head>
+<body>
+    <h1>RSS Feed</h1>
+    {% for item in items %}
+    <div>
+         <a href="{{ item.link }}"><h2>{{ item.title }}</h2></a>
+        {% if item.pubDate %}
+        <p>Published: {{ item.pubDate }}</p>
+        {% endif %}
+        {% if item.author %}
+        <p>Author: {{ item.author }}</p>
+        {% endif %}
+        {% if item.categories %}
+        <p>Categories: {{ item.categories }}</p>
+        {% endif %}
+        {% if item.description %}
+        <p>Description: {{ item.description }}</p>
+        {% endif %}
+        {% if item.content %}
+        <!-- Render content as HTML -->
+        <div>{{ item.content | safe }}</div>
+        {% endif %}
+        {% if item.link %}
+        <a href="{{ item.link }}">Read more</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</body>
+</html>
